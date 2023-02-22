@@ -20,12 +20,23 @@ void Game::StartGame()
 
 void Game::TakeTurn()
 {
+	using namespace std;
+
 	CurrentTurn++;
 
-	std::cout << "Taking a turn\n";
+	Encounter enc = Encounter("The goblin hits the player for 15 damage!\n");
+
+	cout << CurrentTurn << ": Taking a turn\n";
+
+	cout << enc.GetState();
+
+	ThePlayer.TakeDamage(15);
+	cout << ThePlayer.GetStatus();
+
+	cout << enc.GetState();
 
 	if (!ThePlayer.IsAlive()) {
-		std::cout << "The player has died\n";
+		cout << "The player has died\n";
 		IsRunning = false;
 	}
 	
