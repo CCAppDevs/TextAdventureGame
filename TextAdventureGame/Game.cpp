@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "EnemyEncounter.h"
 
 Game::Game()
 {
@@ -24,7 +25,7 @@ void Game::TakeTurn()
 
 	CurrentTurn++;
 
-	Encounter enc = Encounter("The goblin hits the player for 15 damage!\n");
+	EnemyEncounter enc = EnemyEncounter("You encounter a goblin. He hits you for 15 damage!\n", "Goblin", 10, 2);
 
 	cout << CurrentTurn << ": Taking a turn\n";
 
