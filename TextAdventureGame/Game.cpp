@@ -5,6 +5,7 @@ Game::Game()
 {
 	IsRunning = false;
 	CurrentTurn = 0;
+	CurrentEncounter = EnemyEncounter("Goblin", 10, 2);
 }
 
 void Game::StartGame()
@@ -25,16 +26,25 @@ void Game::TakeTurn()
 
 	CurrentTurn++;
 
-	EnemyEncounter enc = EnemyEncounter("You encounter a goblin. He hits you for 15 damage!\n", "Goblin", 10, 2);
-
 	cout << CurrentTurn << ": Taking a turn\n";
 
-	cout << enc.GetState();
+	cout << CurrentEncounter.GetState();
 
-	ThePlayer.TakeDamage(15);
-	cout << ThePlayer.GetStatus();
+	if (CurrentEncounter.GetType() == EncounterType::Monster) {
+		
+		
+		
+		//ThePlayer.TakeDamage(15);
 
-	cout << enc.GetState();
+		// start a loop here and do an entire fight until someone is dead
+
+		//cout << ThePlayer.GetStatus();
+	}
+	else if (CurrentEncounter.GetType() == EncounterType::Default) {
+		cout << CurrentEncounter.GetState();
+	}
+
+	
 
 	if (!ThePlayer.IsAlive()) {
 		cout << "The player has died\n";

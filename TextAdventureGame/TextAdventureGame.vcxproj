@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Encounter.h" />
+    <ClInclude Include="EncounterType.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyEncounter.h" />
     <ClInclude Include="Game.h" />

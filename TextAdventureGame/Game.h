@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Encounter.h"
 
+
 class Game
 {
 private:
@@ -11,6 +12,8 @@ private:
 	Player ThePlayer;
 	std::vector<Encounter> Map;
 	int CurrentTurn;
+
+	Encounter CurrentEncounter;
 
 public:
 	Game();

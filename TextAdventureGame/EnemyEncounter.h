@@ -13,7 +13,13 @@ class EnemyEncounter : public Encounter
 		// the enemy type
 	
 public:
-	EnemyEncounter(std::string desc, std::string name, int health, int damage);
+	EnemyEncounter(std::string name, int health, int damage);
+
+	Enemy GetEnemy();
+
+	void SetComplete();
+
+	std::string GetState();
 
 private:
 	Enemy TheEnemy;

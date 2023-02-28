@@ -1,14 +1,17 @@
 #pragma once
 #include <string>
+#include "EncounterType.h"
 
 class Encounter
 {
-private:
+protected: // all child classes have access
 	std::string Description;
+	EncounterType Type;
 	bool IsCompleted;
 
-public:
+public: // anyone can access
+	Encounter();
 	Encounter(std::string desc);
-	std::string GetState();
+	virtual std::string GetState();
+	EncounterType GetType();
 };
-

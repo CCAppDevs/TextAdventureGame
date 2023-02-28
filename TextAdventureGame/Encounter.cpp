@@ -1,9 +1,17 @@
 #include "Encounter.h"
 
+Encounter::Encounter()
+{
+	Description = "You have encountered a mystery!\n";
+	IsCompleted = false;
+	Type = EncounterType::Default;
+}
+
 Encounter::Encounter(std::string desc)
 {
 	Description = desc;
 	IsCompleted = false;
+	Type = EncounterType::Default;
 }
 
 std::string Encounter::GetState()
@@ -15,4 +23,9 @@ std::string Encounter::GetState()
 		IsCompleted = true;
 		return Description;
 	}
+}
+
+EncounterType Encounter::GetType()
+{
+	return Type;
 }
