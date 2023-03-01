@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include <iostream>
 
 Enemy::Enemy()
 {
@@ -6,6 +7,7 @@ Enemy::Enemy()
 	MaxHealth = 10;
 	Health = MaxHealth;
 	DamageMin = 1;
+	std::cout << "Enemy is created\n";
 }
 
 Enemy::Enemy(std::string name, int health, int damage)
@@ -46,10 +48,18 @@ void Enemy::TakeDamage(int amount)
 	// clamp
 	Health = Health - amount;
 
-	if (Health < 0) {
+	std::cout << Name << " gets hit for " << amount << " damage!\n";
+
+	if (Health <= 0) {
+		std::cout << Name << " has died!\n";
 		Health = 0;
 	}
 	else if (Health > MaxHealth) {
 		Health = MaxHealth;
 	}
+}
+
+std::string Enemy::GetStatus()
+{
+	return Name + " (" + std::to_string(Health) + "/" + std::to_string(MaxHealth) + ")\n";
 }

@@ -13,7 +13,7 @@ private:
 	std::vector<Encounter> Map;
 	int CurrentTurn;
 
-	Encounter CurrentEncounter;
+	Encounter *CurrentEncounter;
 
 public:
 	Game();

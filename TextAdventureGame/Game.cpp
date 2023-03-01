@@ -5,7 +5,7 @@ Game::Game()
 {
 	IsRunning = false;
 	CurrentTurn = 0;
-	CurrentEncounter = EnemyEncounter("Goblin", 10, 2);
+	CurrentEncounter = new EnemyEncounter("Goblin", 10, 2);
 }
 
 void Game::StartGame()
@@ -28,20 +28,38 @@ void Game::TakeTurn()
 
 	cout << CurrentTurn << ": Taking a turn\n";
 
-	cout << CurrentEncounter.GetState();
-
-	if (CurrentEncounter.GetType() == EncounterType::Monster) {
+	if (CurrentEncounter->GetType() == EncounterType::Monster) {
+		cout << CurrentEncounter->GetState();
 		
-		
-		
-		//ThePlayer.TakeDamage(15);
+		EnemyEncounter* enc = dynamic_cast<EnemyEncounter*>(CurrentEncounter);
 
-		// start a loop here and do an entire fight until someone is dead
+		while (enc->GetEnemy().IsAlive()) {
+			// do stuff to the enemy
+			cout << enc->GetEnemy().GetStatus();
+			enc->GetEnemy().TakeDamage(2);
 
-		//cout << ThePlayer.GetStatus();
+			if (!enc->GetEnemy().IsAlive()) {
+				enc->SetComplete();
+			}
+		}
+		// while the monster is alive and the player is not dead
+			// prompt for our action
+			// do the action
+			// monster attack (if alive)
+			// say our current status (health, etc)
 	}
-	else if (CurrentEncounter.GetType() == EncounterType::Default) {
-		cout << CurrentEncounter.GetState();
+	else if (CurrentEncounter->GetType() == EncounterType::Default) {
+		// print out the description
+		cout << CurrentEncounter->GetState();
+	}
+	else if (CurrentEncounter->GetType() == EncounterType::Loot) {
+		// pick up some loot and finish
+	}
+	else if (CurrentEncounter->GetType() == EncounterType::Puzzle) {
+		// display the puzzle and prompt for the correct answer
+	}
+	else {
+		cout << "The encounter here is invalid.\n";
 	}
 
 	

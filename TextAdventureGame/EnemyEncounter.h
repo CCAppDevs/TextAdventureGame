@@ -14,8 +14,9 @@ class EnemyEncounter : public Encounter
 	
 public:
 	EnemyEncounter(std::string name, int health, int damage);
+	~EnemyEncounter();
 
-	Enemy GetEnemy();
+	Enemy& GetEnemy();
 
 	void SetComplete();
 

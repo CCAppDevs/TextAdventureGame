@@ -16,6 +16,7 @@ public:
 
 	// take damage
 	void TakeDamage(int amount);
+	std::string GetStatus();
 
 private:
 	std::string Name;

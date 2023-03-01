@@ -1,5 +1,6 @@
 #include "EnemyEncounter.h"
 #include "Enemy.h"
+#include <iostream>
 
 EnemyEncounter::EnemyEncounter(std::string name, int health, int damage)
 {
@@ -8,7 +9,12 @@ EnemyEncounter::EnemyEncounter(std::string name, int health, int damage)
 	Type = EncounterType::Monster;
 }
 
-Enemy EnemyEncounter::GetEnemy()
+EnemyEncounter::~EnemyEncounter()
+{
+	std::cout << "Enemy Encounter has died\n";
+}
+
+Enemy& EnemyEncounter::GetEnemy()
 {
 	return TheEnemy;
 }
