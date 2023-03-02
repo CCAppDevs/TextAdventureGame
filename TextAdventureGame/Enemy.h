@@ -23,7 +23,7 @@ private:
 	int Health;
 	int MaxHealth;
 	int DamageMin;
-	// int DamageMax;
+	int DamageMax;
 	// int Level;
 };
 

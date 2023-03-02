@@ -7,7 +7,9 @@ Enemy::Enemy()
 	MaxHealth = 10;
 	Health = MaxHealth;
 	DamageMin = 1;
+	DamageMax = 4;
 	std::cout << "Enemy is created\n";
+	srand(time(NULL));
 }
 
 Enemy::Enemy(std::string name, int health, int damage)
@@ -15,7 +17,8 @@ Enemy::Enemy(std::string name, int health, int damage)
 	Name = name;
 	MaxHealth = health;
 	Health = MaxHealth;
-	DamageMin = damage;
+	DamageMin = 1;
+	DamageMax = damage;
 }
 
 std::string Enemy::GetName()
@@ -35,7 +38,9 @@ int Enemy::GetMaxHealth()
 
 int Enemy::GetDamage()
 {
-	return DamageMin;
+	// TODO: fix random damage range math issue
+	int damage = rand() % DamageMax + DamageMin;
+	return damage;
 }
 
 bool Enemy::IsAlive()

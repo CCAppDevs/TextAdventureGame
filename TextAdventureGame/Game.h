@@ -10,7 +10,7 @@ class Game
 private:
 	bool IsRunning;
 	Player ThePlayer;
-	std::vector<Encounter> Map;
+	std::vector<Encounter*> Map;
 	int CurrentTurn;
 
 	Encounter *CurrentEncounter;

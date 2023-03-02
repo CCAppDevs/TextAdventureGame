@@ -5,7 +5,14 @@ Game::Game()
 {
 	IsRunning = false;
 	CurrentTurn = 0;
-	CurrentEncounter = new EnemyEncounter("Goblin", 10, 2);
+
+	// load ten encounters
+	for (int i = 0; i < 10; i++) {
+		// add a new goblin encounter
+		Map.push_back(new EnemyEncounter("Goblin", 10, 5));
+	}
+
+	CurrentEncounter = Map[0];
 }
 
 void Game::StartGame()
@@ -36,17 +43,22 @@ void Game::TakeTurn()
 		while (enc->GetEnemy().IsAlive()) {
 			// do stuff to the enemy
 			cout << enc->GetEnemy().GetStatus();
-			enc->GetEnemy().TakeDamage(2);
+			enc->GetEnemy().TakeDamage(ThePlayer.GetDamage());
 
 			if (!enc->GetEnemy().IsAlive()) {
 				enc->SetComplete();
 			}
+			else {
+				int damage = enc->GetEnemy().GetDamage();
+				cout << "The " << enc->GetEnemy().GetName() << " hits you for " << damage << "!\n";
+				ThePlayer.TakeDamage(damage);
+				cout << ThePlayer.GetStatus();
+			}
 		}
-		// while the monster is alive and the player is not dead
-			// prompt for our action
-			// do the action
-			// monster attack (if alive)
-			// say our current status (health, etc)
+		
+		if (CurrentTurn < 10) {
+			CurrentEncounter = Map[CurrentTurn];
+		}
 	}
 	else if (CurrentEncounter->GetType() == EncounterType::Default) {
 		// print out the description

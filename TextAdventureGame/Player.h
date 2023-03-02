@@ -7,6 +7,8 @@ private:
 	int Health;
 	int MaxHealth;
 	std::string Name;
+	int DamageMin;
+	int DamageMax;
 
 public:
 	Player();
@@ -15,5 +17,7 @@ public:
 	// combat
 	void TakeDamage(int damage);
 	std::string GetStatus();
+
+	int GetDamage();
 };
 
