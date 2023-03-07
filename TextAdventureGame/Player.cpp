@@ -9,6 +9,8 @@ Player::Player()
 	Name = "Player";
 	DamageMin = 1;
 	DamageMax = 10;
+	Experience = 0;
+	Gold = 0;
 	// seed the random number generator
 	srand(time(NULL));
 }
@@ -32,7 +34,37 @@ void Player::TakeDamage(int damage)
 
 std::string Player::GetStatus()
 {
-	return "Character: " + Name + " (" + std::to_string(Health) + "/" + std::to_string(MaxHealth) + ")\n";
+	return "Character: " + Name +
+		" (" + std::to_string(Health) +	"/" + std::to_string(MaxHealth) + ")\n" +
+		"Level: " + std::to_string(GetLevel()) +
+		" - Gold: " + std::to_string(Gold) + "\n";
+}
+
+int Player::GetLevel()
+{
+	return 1 + (Experience / 100);
+}
+
+void Player::GainExperience(int exp)
+{
+	Experience += exp;
+}
+
+int Player::GetGold()
+{
+	return Gold;
+}
+
+void Player::SetGold(int amount)
+{
+	// set the value of gold to amount, don't increase it
+	Gold = amount;
+}
+
+void Player::IncreaseGold(int amount)
+{
+	// increase, don't reset it
+	Gold += amount;
 }
 
 int Player::GetDamage()

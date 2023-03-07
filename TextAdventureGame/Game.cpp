@@ -5,11 +5,12 @@ Game::Game()
 {
 	IsRunning = false;
 	CurrentTurn = 0;
+	ThePlayer = Player();
 
 	// load ten encounters
 	for (int i = 0; i < 10; i++) {
 		// add a new goblin encounter
-		Map.push_back(new EnemyEncounter("Goblin", 10, 5));
+		Map.push_back(new EnemyEncounter("Goblin", 10, 5, 20, 20));
 	}
 
 	CurrentEncounter = Map[0];
@@ -21,6 +22,8 @@ void Game::StartGame()
 
 	IsRunning = true;
 	cout << "Starting Game\n";
+
+	cout << "The player is level: " << ThePlayer.GetLevel() << "\n";
 
 	while (IsRunning) {
 		TakeTurn();
@@ -46,6 +49,11 @@ void Game::TakeTurn()
 			enc->GetEnemy().TakeDamage(ThePlayer.GetDamage());
 
 			if (!enc->GetEnemy().IsAlive()) {
+				Reward reward = enc->GetReward();
+
+				ThePlayer.GainExperience(reward.Experience);
+				ThePlayer.IncreaseGold(reward.Gold);
+
 				enc->SetComplete();
 			}
 			else {

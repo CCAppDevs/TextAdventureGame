@@ -2,11 +2,13 @@
 #include "Enemy.h"
 #include <iostream>
 
-EnemyEncounter::EnemyEncounter(std::string name, int health, int damage)
+EnemyEncounter::EnemyEncounter(std::string name, int health, int damage, int gold, int exp)
 {
 	TheEnemy = Enemy(name, health, damage);
 	Description = "A " + TheEnemy.GetName() + " appears!\n";
 	Type = EncounterType::Monster;
+	GoldReward = gold;
+	ExperienceReward = exp;
 }
 
 EnemyEncounter::~EnemyEncounter()
@@ -32,4 +34,13 @@ std::string EnemyEncounter::GetState()
 	else {
 		return Description;
 	}
+}
+
+Reward EnemyEncounter::GetReward()
+{
+	if (IsCompleted) {
+		return Reward(0, 0);
+	}
+
+	return Reward(GoldReward, ExperienceReward);
 }

@@ -1,19 +1,12 @@
 #pragma once
 #include "Encounter.h"
 #include "Enemy.h"
+#include "Reward.h"
 
 class EnemyEncounter : public Encounter
 {
-	// inherited:
-		// description of the encounter
-		// isCompleted Flag
-		// type of encounter?
-
-	// new stuff:
-		// the enemy type
-	
 public:
-	EnemyEncounter(std::string name, int health, int damage);
+	EnemyEncounter(std::string name, int health, int damage, int gold = 1, int exp = 5);
 	~EnemyEncounter();
 
 	Enemy& GetEnemy();
@@ -22,7 +15,11 @@ public:
 
 	std::string GetState();
 
+	Reward GetReward();
+
 private:
 	Enemy TheEnemy;
+	int GoldReward;
+	int ExperienceReward;
 };
 
