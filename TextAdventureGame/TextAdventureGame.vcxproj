@@ -131,6 +131,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyEncounter.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="LootEncounter.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Reward.cpp" />
     <ClCompile Include="TextAdventureGame.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyEncounter.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="LootEncounter.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Reward.h" />
   </ItemGroup>

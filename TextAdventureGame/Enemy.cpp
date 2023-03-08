@@ -8,7 +8,6 @@ Enemy::Enemy()
 	Health = MaxHealth;
 	DamageMin = 1;
 	DamageMax = 4;
-	std::cout << "Enemy is created\n";
 	srand(time(NULL));
 }
 
